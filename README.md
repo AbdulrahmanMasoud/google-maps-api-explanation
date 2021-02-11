@@ -2,6 +2,10 @@
 عشان تستخدم جوجل ماب لازم يبقا معاك سيكرت كي وده بتجيبه من `جوجل ماب اي بي اي`
 وهو حاليا مش مجاني ف ممكن تبحث وتشوف ازاي تجيب كي تجرب بيه او تشتري من جوجل ماب
 <a href="https://console.cloud.google.com/apis/credentials">من هنا</a>
+<br>
+وممكن تشوف الفديو ده افضل هيعرفك ازاي تجيب سيكرت كي  مجاني
+
+<a href="https://www.youtube.com/watch?v=OGTG1l7yin4">How To Create Google Maps API KEY For Free</a>
 
 ندخل بقا علي ازاي نظهر الخريطه اصلا في المتصفح عندنا 
 
