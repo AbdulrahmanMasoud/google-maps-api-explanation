@@ -14,6 +14,11 @@
         margin: 0;
         padding: 0;
       }
+      #lat_lng{
+          background-color: #ddd;
+          color: cadetblue;
+          text-align: center;
+      }
     </style>
 </head>
 <body>
@@ -21,45 +26,43 @@
 
 [1] You Must Know How To Display Map And How To Add Marker In Map And How To Display Info Window
 
-[2] This Example Will Explain How To Add Meny Markers In Map And Display Info Window On It
-    ** Will Add Data For Latitude and Longitude
-    ** Looping On It
+[2] This Example Will Explain How To Show Latitude and Longitude To Make Any Functionaly On It
+
 
  -------------------------------------------------------------->
-
+<h1 id="lat_lng"></h1>
     <div id="map"></div>
 
     <script>
         function initMap() {
-            // Data For Latitude and Longitude etc..
-            const markers = [
-                {position:{lat: 30.131590128421266, lng: 31.254884498715704}, title: 'Cairo', info: "Some Info About Cairo"},
-                {position:{lat: 31.2557806255078, lng: 30.013429420590704}, title: 'Alex', info: "Some Info About Alex" },
-                {position:{lat: 31.359033499660182, lng: 27.233888404965704}, title: 'Matroh', info: "Some Info About Matroh" },
-                {position:{lat:31.218206083060206, lng: 32.342530983090704}, title: 'Bor Saied', info: "Some Info About Bor Saied" },
-            ];
+        let customMarker = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        let lat_lang = document.getElementById('lat_lang');
           map = new google.maps.Map(document.getElementById("map"), { 
             center: {lat: 26.748801039050093, lng: 29.892579811215704 },
             zoom: 5,
           });
 
-          // Looping On Markers
-          markers.forEach(function (loc){
-              // Add Marker
+            // Add Marker
           const marker = new google.maps.Marker({
-                position: loc.position,
-                title: loc.title,
+                position: {lat: 30.131590128421266, lng: 31.254884498715704},
+                title: 'Cairo',
                 map: map,
+                icon:customMarker, //Yes You Can Add Custom Marker
+                draggable: true, // Yes You Can Move Marker Any Where
              });
              // Add Info On Marker
           const infowindow = new google.maps.InfoWindow({
-            content: loc.info,
+            content: 'Some Info About Cairo',
           });
           // Display Info Window
           marker.addListener("click", () => {
             infowindow.open(map, marker);
           });
+
+          map.addListener("click", (mapsMouseEvent) => {
+         lat_lang.innerHTML = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2); // This To Print lat and Lang In h1
         });
+      
 
 
         }
