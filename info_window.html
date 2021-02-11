@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map Apis</title>
+    <style>
+        #map {
+        height: 70%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+<!---------------------------Explanation------------------------
+
+[1] If You Didn't See How To Display Map You Must Check simple_map.html To Understand :)
+[2] If You Didn't See How To Add Marker In Map You Must Check add_marker.html To Understand :)
+
+[3] How To Display Info Window On Marker 
+    * Add Marker In var
+    * Use [new google.maps.InfoWindow({})]  
+    * Make Function When You Click On Marker Will Dispaly Info Window
+ -------------------------------------------------------------->
+
+
+<!-- Div Has Id (map) You Will Use It  -->
+    <div id="map"></div>
+
+    <script>
+        // To Display Map
+        function initMap() {
+          map = new google.maps.Map(document.getElementById("map"), { // This To Display Map In Your Div Has Id map
+            center: { lat: 29.943453969087464, lng: 31.326295631528204 }, // This To Display Latitude and Longitude In Map
+            zoom: 8, // This Map Zooming 
+          });
+
+          // [2] Display Marker 
+         const marker = new google.maps.Marker({
+          position: { lat: 29.943453969087464, lng: 31.326295631528204 }, // Position Of Marker In Map
+          map, // Must Add This To Use Your Map
+          title: "This Marker", // This Title Will Display It When You Hover On Marker
+        });
+
+        // [3] Add Info Window In Marker
+        const infowindow = new google.maps.InfoWindow({
+          content: "Your Content", // Your Content Here [You Can Add HTML :)]
+        });
+        // Function to Display Info Window When Click On Marker 
+        marker.addListener("click", () => {
+          infowindow.open(map, marker);
+        });
+
+        }
+
+
+
+
+
+      </script>
+      <!-- Get This Link Form Google Map Apis -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_37gmGg4dOwESmxBtmdCPpYTlHomYneU&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+</body>
+</html>
