@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map Apis</title>
+    <style>
+        #map {
+        height: 70%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #lat_lng{
+          background-color: #ddd;
+          color: cadetblue;
+          text-align: center;
+      }
+    </style>
+</head>
+<body>
+<!---------------------------Explanation------------------------
+
+[1] You Must Know How To Display Map And How To Add Marker In Map And How To Display Info Window
+
+[2] This Example Will Explain How To Show Latitude and Longitude To Make Any Functionaly On It
+
+
+ -------------------------------------------------------------->
+<h1 id="lat_lng"></h1>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+        let customMarker = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        let lat_lang = document.getElementById('lat_lang');
+          map = new google.maps.Map(document.getElementById("map"), { 
+            center: {lat: 26.748801039050093, lng: 29.892579811215704 },
+            zoom: 5,
+          });
+
+            // Add Marker
+          const marker = new google.maps.Marker({
+                position: {lat: 30.131590128421266, lng: 31.254884498715704},
+                title: 'Cairo',
+                map: map,
+                icon:customMarker, //Yes You Can Add Custom Marker
+                draggable: true, // Yes You Can Move Marker Any Where
+             });
+             // Add Info On Marker
+          const infowindow = new google.maps.InfoWindow({
+            content: 'Some Info About Cairo',
+          });
+          // Display Info Window
+          marker.addListener("click", () => {
+            infowindow.open(map, marker);
+          });
+
+          map.addListener("click", (mapsMouseEvent) => {
+         lat_lang.innerHTML = JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2); // This To Print lat and Lang In h1
+        });
+      
+
+
+        }
+
+
+
+
+
+      </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_37gmGg4dOwESmxBtmdCPpYTlHomYneU&callback=initMap&libraries=&v=weekly" async></script>
+</body>
+</html>
