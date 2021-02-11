@@ -19,14 +19,10 @@
 <body>
 <!---------------------------Explanation------------------------
 
-[1] First One We Will Get The Secret Key From Google Api And import This 
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly" async></script>
-And Replace Your Key [YOUR_API_KEY]
+[1] If You Didn't See How To Display Map You Must Check simple_map.html To Understand :)
 
-[2] Should Add Div Has Id (map) You Will Use It
+[2] To Display Marker In Your Map Must Use This [ google.maps.Marker({})]
 
-[3] Write Callback Function It Is [initMap]  if You Check src in script You Will See callback=initMap
-    This Function To Display Map
  -------------------------------------------------------------->
 
 
@@ -40,7 +36,19 @@ And Replace Your Key [YOUR_API_KEY]
             center: { lat: 29.943453969087464, lng: 31.326295631528204 }, // This To Display Latitude and Longitude In Map
             zoom: 8, // This Map Zooming 
           });
+
+          // [2] Display Marker 
+          new google.maps.Marker({
+          position: { lat: 29.943453969087464, lng: 31.326295631528204 }, // Position Of Marker In Map
+          map, // Must Add This To Use Your Map
+          title: "Hello World!", // This Title Will Display It When You Hover On Marker
+        });
         }
+
+
+
+
+
       </script>
       <!-- Get This Link Form Google Map Apis -->
     <script
